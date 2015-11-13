@@ -1,4 +1,6 @@
 import unittest
+from datetime import date
+
 from mock import patch
 
 from quickbooks.objects.base import PhoneNumber
@@ -60,3 +62,12 @@ class UpdateMixinTest(unittest.TestCase):
 
         department.save()
         update_object.assert_called_once_with("Department", json)
+
+
+class ChangedDataMixinTest(unittest.TestCase):
+    @patch('quickbooks.mixins.QuickBooks.changed_data')
+    def test_changed(self, changed_data):
+        changed_since = date(2015, 1, 1).strftime("%Y-%m-%d")
+        departments = Department.changed(changed_since)
+
+        changed_data.assert_called_once_with(['Department'], changed_since)

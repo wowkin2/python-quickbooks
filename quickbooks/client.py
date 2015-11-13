@@ -209,6 +209,14 @@ class QuickBooks(object):
 
         return results
 
+    def changed_data(self, entity_list, changed_since):
+        entities = ",".join(entity_list)
+        url = self.api_url + "/company/{0}/cdc?entities={1}&changedSince={2}".format(
+            self.company_id, entities, changed_since)
+        result = self.make_request("GET", url, None, content_type='application/text')
+
+        return result
+
     def query(self, select):
         url = self.api_url + "/company/{0}/query".format(self.company_id)
         result = self.make_request("POST", url, select, content_type='application/text')

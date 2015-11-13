@@ -1,9 +1,11 @@
 from six import python_2_unicode_compatible
+
+from quickbooks.mixins import ChangeDataMixin
 from .base import QuickbooksManagedObject, QuickbooksTransactionEntity, Ref
 
 
 @python_2_unicode_compatible
-class Department(QuickbooksManagedObject, QuickbooksTransactionEntity):
+class Department(QuickbooksManagedObject, QuickbooksTransactionEntity, ChangeDataMixin):
     """
     QBO definition: The Department entity provides a way to track different segments of the business, divisions, or
     physical locations such as stores, and allows another way of categorizing the entire transaction.

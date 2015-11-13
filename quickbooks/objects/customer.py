@@ -1,10 +1,12 @@
 from six import python_2_unicode_compatible
+
+from quickbooks.mixins import ChangeDataMixin
 from .base import Address, PhoneNumber, EmailAddress, WebAddress, Ref, QuickbooksManagedObject, \
     QuickbooksTransactionEntity
 
 
 @python_2_unicode_compatible
-class Customer(QuickbooksManagedObject, QuickbooksTransactionEntity):
+class Customer(QuickbooksManagedObject, QuickbooksTransactionEntity, ChangeDataMixin):
     """
     QBO definition: A customer is a consumer of the service or product that your business offers. The Customer object
     allows you to categorize customers according to your business requirements. You must first create a customer

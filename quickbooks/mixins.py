@@ -126,3 +126,20 @@ class ListMixin(object):
                 obj_list.append(cls.from_json(item_json))
 
         return obj_list
+
+
+class ChangeDataMixin(object):
+    @classmethod
+    def changed(cls, changed_since):
+        entities = [cls.qbo_object_name]
+
+        qb = QuickBooks()
+        json_data = qb.changed_data(entities, changed_since)
+
+        obj_list = []
+
+        if cls.qbo_object_name in json_data["QueryResponse"]:
+            for item_json in json_data["QueryResponse"][cls.qbo_object_name]:
+                obj_list.append(cls.from_json(item_json))
+
+        return obj_list
