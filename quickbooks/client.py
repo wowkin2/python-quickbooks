@@ -165,6 +165,10 @@ class QuickBooks(object):
         }
 
         req = self.session.request(request_type, url, True, self.company_id, headers=headers, data=request_body)
+        if "cdc" in url:
+            print url
+            print headers
+            print request_type
 
         try:
             result = req.json()
@@ -213,7 +217,8 @@ class QuickBooks(object):
         entities = ",".join(entity_list)
         url = self.api_url + "/company/{0}/cdc?entities={1}&changedSince={2}".format(
             self.company_id, entities, changed_since)
-        result = self.make_request("GET", url, None, content_type='application/text')
+
+        result = self.make_request("POST", url, "", content_type='application/text')
 
         return result
 
