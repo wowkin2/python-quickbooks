@@ -156,9 +156,10 @@ class QuickBooks(object):
 
         return session
 
-    def make_request(self, request_type, url, request_body=None, content_type='application/json'):
+    def make_request(self, request_type, url, request_body=None, content_type='application/json', params=None):
 
-        params = {}
+        if not params:
+            params = {}
 
         if self.minorversion:
             params['minorversion'] = self.minorversion
@@ -190,6 +191,15 @@ class QuickBooks(object):
         url = self.api_url + "/company/{0}/{1}/{2}/".format(self.company_id, qbbo.lower(), pk)
         result = self.make_request("GET", url, {})
 
+        return result
+
+    def get_report(self, report_type, qs=None):
+        '''Get data from the report endpoint'''
+        if qs == None:
+            qs = {}
+
+        url = self.api_url + "/company/{0}/reports/{1}".format(self.company_id, report_type)
+        result = self.make_request("GET", url, params=qs)
         return result
 
     def handle_exceptions(self, results):
