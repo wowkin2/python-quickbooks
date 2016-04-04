@@ -235,6 +235,8 @@ Review results for batch operation:
         for error in fault.Error:
             print "Error " + error.Message 
 
+
+
 **Note:** Objects and object property names match their Quickbooks
 counterparts and do not follow PEP8.
 
@@ -244,7 +246,7 @@ on Python 2.
 
 .. _Intuit developer guide: https://developer.intuit.com/docs/0100_accounting/0300_developer_guides/querying_data
 .. _Intuit Batch Operations Guide: https://developer.intuit.com/docs/0100_accounting/0300_developer_guides/batch_operations
-    
+.. _Intuit Report documentation: https://developer.intuit.com/docs/0100_accounting/0300_developer_guides/inside_a_profit_and_loss_report
 
 .. _quickbooks-python: https://github.com/troolee/quickbooks-python
 .. _Minor versions: https://developer.intuit.com/docs/0100_accounting/0300_developer_guides/minor_versions

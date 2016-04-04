@@ -51,6 +51,12 @@ class QuickBooks(object):
         "TimeActivity", "Vendor", "VendorCredit"
     ]
 
+    _REPORTS = [
+        "BalanceSheet", "ProfitandLoss", "ProfitAndLossDetail", "Balance", "CashFlow", "InventoryValuationSummary",
+        "CustomerSales", "ItemSales", "DepartmentSales", "ClassSales", "CustomerIncome", "CustomerBalance",
+        "CustomerBalanceDetail", "AgedReceivables", "AgedReceivableDetail", "VendorBalance", "VendorBalanceDetail",
+        "AgedPayables", "AgedPayableDetail", "VendorExpenses", "AccountListDetail", "GeneralLedgerDetail", "TaxSummary"
+    ]
     __instance = None
 
     def __new__(cls, **kwargs):
@@ -194,8 +200,9 @@ class QuickBooks(object):
         return result
 
     def get_report(self, report_type, qs=None):
-        '''Get data from the report endpoint'''
-        if qs == None:
+        self.isvalid_report_name(report_type)
+
+        if qs is None:
             qs = {}
 
         url = self.api_url + "/company/{0}/reports/{1}".format(self.company_id, report_type)
@@ -238,6 +245,12 @@ class QuickBooks(object):
     def isvalid_object_name(self, object_name):
         if object_name not in self._BUSINESS_OBJECTS:
             raise Exception("{0} is not a valid QBO Business Object.".format(object_name))
+
+        return True
+
+    def isvalid_report_name(self, report_name):
+        if report_name not in self._REPORTS:
+            raise Exception("{0} is not a valid QBO Report.".format(report_name))
 
         return True
 
