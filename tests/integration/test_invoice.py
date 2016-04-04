@@ -1,5 +1,7 @@
+import os
 import unittest
 
+from quickbooks.client import QuickBooks
 from quickbooks.objects.customer import Customer
 from quickbooks.objects.detailline import SaleItemLine, SalesItemLineDetail
 from quickbooks.objects.invoice import Invoice
@@ -8,6 +10,16 @@ from quickbooks.objects.base import CustomerMemo
 
 
 class InvoiceTest(unittest.TestCase):
+    def setUp(self):
+        QuickBooks(
+            sandbox=True,
+            consumer_key=os.environ.get('CONSUMER_KEY'),
+            consumer_secret=os.environ.get('CONSUMER_SECRET'),
+            access_token=os.environ.get('ACCESS_TOKEN'),
+            access_token_secret=os.environ.get('ACCESS_TOKEN_SECRET'),
+            company_id=os.environ.get('COMPANY_ID')
+        )
+
     def test_create(self):
         invoice = Invoice()
 
