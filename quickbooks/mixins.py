@@ -109,7 +109,7 @@ class SendMixin(object):
         if send_to:
             end_point = "{0}?sendTo={1}".format(end_point, send_to)
 
-        results = qb.misc_operation(end_point)
+        results = qb.misc_operation(end_point, content_type="application/octet-stream")
 
         return results
 

@@ -293,9 +293,9 @@ class QuickBooks(object):
 
         return results
 
-    def misc_operation(self, end_point, request_body=""):
+    def misc_operation(self, end_point, request_body="", content_type=""):
         url = self.api_url + "/company/{0}/{1}".format(self.company_id, end_point)
-        results = self.make_request("POST", url, request_body)
+        results = self.make_request("POST", url, request_body, content_type)
 
         return results
 
