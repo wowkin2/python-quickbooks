@@ -1,6 +1,10 @@
 Changelog
 ========
 
+* 0.7.4 (November 29th, 2017)
+    * Added optional send_to parameter to SendMixin.
+    * Fixed bug in SendMixin.
+
 * 0.7.3 (November 28th, 2017)
     * Fixed bug in ListMixin count method.
 
@@ -8,7 +12,7 @@ Changelog
     * Added support for sending invoices.
     * Added count to ListMixin.
     * Fixed issue with PDF file attachments in Python 2.
-    * Removed duplicate coverage depnedency.
+    * Removed duplicate coverage dependency.
 
 * 0.7.0 (August 31st, 2017)
     * Added support for OAuth 2.0
@@ -69,7 +73,6 @@ Changelog
     * Fixed issues loading detail lines on the following objects: JournalEntry, CreditMemo, Bill, Purchase and PurchaseOrder.
     * Removed the following objects: CreditMemoLine, BillLine, JournalEntryLine, PurchaseLine, and PurchaseOrderLine.
     * Corrected spelling of object SaleItemLine to SalesItemLine.
-
 
 * 0.4.0 (June 15, 2016)
     * Added a way of disconnecting a Quickbooks Account to client.
