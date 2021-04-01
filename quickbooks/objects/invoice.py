@@ -66,7 +66,7 @@ class Invoice(DeleteMixin, QuickbooksPdfDownloadable, QuickbooksManagedObject, Q
         self.DueDate = ""
         self.ShipDate = ""
         self.TrackingNum = ""
-        self.TotalAmt = ""
+        self.TotalAmt = 0
         self.TxnDate = ""
         self.ApplyTaxAfterDiscount = False
         self.PrintStatus = "NotSet"

@@ -43,7 +43,7 @@ class Bill(DeleteMixin, QuickbooksManagedObject, QuickbooksTransactionEntity, Li
 
         self.DueDate = ""
         self.Balance = 0
-        self.TotalAmt = ""
+        self.TotalAmt = 0
         self.TxnDate = ""
         self.DocNumber = ""
         self.PrivateNote = ""
